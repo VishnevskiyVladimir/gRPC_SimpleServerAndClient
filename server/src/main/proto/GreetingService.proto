@@ -1,0 +1,27 @@
+syntax = "proto3";
+package com.example.grpc;
+
+message  HelloRequest {
+  string firstname = 1;
+  string lastname = 2;
+}
+
+enum Mood {
+  HAPPY = 0;
+  SLEEPY = 1;
+  TIRED = 2;
+}
+
+
+message  HelloResponse {
+  string firstname = 1;
+  string lastname = 2;
+  int64 age = 3;
+  Mood mood = 4;
+  repeated string hobbies = 5;
+  map<string, string> some_map = 6;
+}
+
+service GreetingService {
+  rpc greeting(HelloRequest) returns (HelloResponse);
+}
